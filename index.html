@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="libs/angular.min.js"></script>
+</head>
+<body ng-app="myapp">
+    <!-- Định nghĩa phạm vi sử dụng AngularJS -->
+    <div ng-controller="demoController">
+        <!-- Định nghĩa ra phạm vi gia diện được điều hướng bởi controller -->
+        <h1>{{xinchao}}</h1>
+        <h2>{{maSV}}</h2>
+        <h2>{{tenSV}}</h2>
+        <h2>{{namSinh}}</h2>
+        <!-- Lấy dự liệu trong đối tượng -->
+        <h1>{{sinhVien.maSV}}</h1>
+        <!-- if -->
+        <h1 ng-if="sinhVien.tinhTrang == true && sinhVien.namSinh <= 2004">Hết ế. Xin chúc mừng</h1>
+        <!-- switch case -->
+        <span ng-switch="sinhVien.namSinh">
+            <span ng-switch-when="2004">Ế cấp 1</span>
+            <span ng-switch-when="2003">Ế cấp 2</span>
+            <span ng-switch-when="2002">Ế cấp 3</span>
+            <span ng-switch-when="2001">Ế cấp cao đẳng</span>
+            <span ng-switch-when="2000">Ế cấp đại học</span>
+        </span>
+        <table>
+            <tr>
+                <th>Mã Sinh Viên</th>
+                <th>Tên Sinh Viên</th>
+                <th>Năm Sinh</th>
+                <th>Tình trạng</th>
+            </tr>
+            <tr ng-repeat="sv in sVien">
+                <td>{{sv.maSV}}</td>
+            </tr>
+        </table>
+    </div>
+    <script src="controllers/app.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="libs/angular.min.js"></script>
+</head>
+<body ng-app="myApp">
+    <div ng-controller="myController">
+        <form>
+            <!-- ng-model: được sử dụng để buộc dự liệu 2 chiều -->
+            <!-- 1: Từ $scope -->
+            <!-- 2: Điều khiển của fomr như các thẻ input, select, textarea -->
+            <input type="text" ng-model="input.name">
+            <!-- <h2>Đã nhập: {{name}}</h2> -->
+            <!-- lưu ý: Đặt khu vực cho ng-model thì cần 1 scope từng tự để nhận dữ liễu -->
+            <!-- radio -->
+            <label>Giới tính</label>
+            <input type="radio" value="1" ng-model="input.gender">Nam
+            <input type="radio" value="0" ng-model="input.gender">Nữ
+            <!-- checkbox -->
+            <label>Danh sách ny old</label>
+            <input type="checkbox" ng-model="input.danhSach.All">All
+            <input type="checkbox" ng-model="input.danhSach.A" ng-checked="input.danhSach.All">Nguyễn Thị A
+            <input type="checkbox" ng-model="input.danhSach.B" ng-checked="input.danhSach.All">Nguyễn Thị B
+            <input type="checkbox" ng-model="input.danhSach.C" ng-checked="input.danhSach.All">Nguyễn Thị C
+            <!-- select -->
+            <!-- Cấp 1 -->
+            <!-- <label>Chọn áo đi chơi</label>
+            <select ng-model="input.select">
+                <option value="1">Áo hoa</option>
+                <option value="2">Áo bà ba</option>
+                <option value="3">Áo ni lông</option>
+            </select> -->
+            <!-- Cấp 2 -->
+            <!-- ng-repeat -->
+            <label>Danh mục sản phẩm</label>
+            <select ng-model="dmID">
+                <option ng-repeat="dm in danhMuc" value="{{dm.id}}">{{dm.name}}</option>
+            </select>
+            <!-- ng-options -->
+            <label>Danh mục sản phẩm 2</label>
+            <select ng-model="danhMucID" ng-options="dm.name for dm in danhMuc"></select>
+            <button ng-click="submit()">Gửi</button>
+        </form>
+    </div>
+    <script src="controllers/form.js"></script>
+</body>
+</html>
